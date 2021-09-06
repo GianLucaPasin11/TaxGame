@@ -1,0 +1,113 @@
+.otree-body {
+    max-width: 1320px
+}
+
+.otree-title {
+    margin: 0 !important;
+    padding-top: 20px;
+}
+
+.row > * {
+    padding-left: 0;
+}
+
+.col-border {
+    border: 2px solid #c0c0c0;
+    border-radius: 5px;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track { /* Bar in which the slider handle can be moved */
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: #d3d3d3;
+    border-radius: 5px;
+}
+
+input[type=range]::-moz-range-track { /* Bar in which the slider handle can be moved */
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: #d3d3d3;
+    border-radius: 5px;
+}
+
+input[type=range]::-ms-track { /* Bar in which the slider handle can be moved */
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-radius: 5px;
+    color: transparent;
+    border-color: transparent;
+    border-width: 12px 0;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #d3d3d3;
+    border-radius: 6px 0 0 6px;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: #d3d3d3;
+    border-radius: 0 6px 6px 0;
+}
+
+input[type=range]::-ms-ticks-before {
+    color: transparent;
+}
+
+input[type=range]::-ms-ticks-after {
+    color: transparent;
+}
+
+input[type=range]::-ms-tooltip {
+    display: none;
+}
+
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use webkit (Chrome, Opera, Safari, Edge) and moz (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;       /* Override default look */
+    appearance: none;
+    margin-top: -8px;
+    width: 8px;                     /* Set a specific slider handle width */
+    height: 20px;                   /* Slider handle height */
+    border: none;
+    background: #4CAF50;            /* Indigo background (Javascript color name) */
+    cursor: pointer;                /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+    appearance: none;
+    width: 8px;                     /* Set a specific slider handle width */
+    height: 20px;                   /* Slider handle height */
+    border: none;
+    border-radius: 0;               /* Radius makes the slider handle round */
+    background: #4CAF50;            /* Green background (Javascript color name) */
+    cursor: pointer;                /* Cursor on hover */
+}
+
+.slider::-ms-thumb {
+    -webkit-appearance: none;       /* Override default look */
+    appearance: none;
+    width: 8px;                     /* Set a specific slider handle width */
+    height: 20px;                   /* Slider handle height */
+    border: none;
+    background: #4CAF50;            /* Indigo background (Javascript color name) */
+    cursor: pointer;                /* Cursor on hover */
+}

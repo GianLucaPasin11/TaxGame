@@ -1,0 +1,21 @@
+{{ block title }}
+    Terza fase
+{{ endblock }}
+
+{{ block content }}
+<b>In questa fase dell'esperimento hai la possibilità di guadagnare uno stipendio.</b> <br>
+<br>
+Nella pagina che segue ti verranno mostrati dei cursori, ognuno dei quali va da 0 a 100. I cursori si risolvono spostando il marker del cursore (inizialmente posizionato su 0) al punto medio di 50.<br>
+<br>
+Di seguito un esempio:<br>
+<br>
+<img src="{{ static 'ret_slider/img/ret_slider_screenshot.png' }}" style="display: block; margin: 1rem auto 2rem auto">
+<br>
+Dal momento in cui cliccherai su "Next" avrai 3 minuti per risolvere <b>almeno</b> 10 cursori.<br>
+Purtroppo, se non riuscirai a completare almeno 10 cursori non guadagnerai nessuno stipendio e non potrai continuare l'esperimento.<br>
+<br>
+
+
+
+    {{ next_button }}
+{{ endblock }}

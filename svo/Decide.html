@@ -1,0 +1,40 @@
+{{ block title }}
+SVO task: item {{ subsession.round_number }} of {{ Constants.num_rounds }}
+{{ endblock }}
+{{ block content }}
+
+<p>
+    In questa fase lei è stata/o accoppiata/o casualmente con un'altra persona che non conosce. Dovrà prendere una serie di decisioni sull'allocazione delle risorse tra lei e quest'altra persona.
+Per ciascuno dei 15 slider (come quello sopra indicato), indichi la distribuzione delle risorse che preferisce contrassegnando la rispettiva posizione lungo lo slider.
+</p>
+<p>
+    Alla fine dell'esperimento, verrà scelta a caso una persona per ogni coppia e verrà applicata una delle decisioni prese da questa persona. Questo determinerà i guadagni che entrambi riceverete in questa fase. In altre parole, se vieni selezionato, una delle tue scelte determinerà il guadagno che riceverete sia voi che l'altra persona. Se non sei selezionato, verrà implementata una scelta casuale fatta dall'altra persona e i tuoi guadagni dipenderanno dalla scelta che ha fatto sulla distribuzione delle risorse. La selezione sarà casuale e nessuno di voi saprà in anticipo quale decisione verrà applicata.
+</p>
+<p>
+    <b>Scelga come distribuire le risorse tra lei e l'altra persona muovendo lo slider<br>
+</p>
+
+<div class="input-group">
+    <input type="range" name="choice" min="0" max="8" class="form-range" oninput="sliderMoved(this)">
+</div>
+
+{{ next_button }}
+
+{{ include Constants.chart_template }}
+
+
+<script>
+    function sliderMoved(input) {
+        let idx = parseInt(input.value);
+
+        let row = js_vars.rows[idx];
+        let to_self = row.to_self;
+        let to_other = row.to_other;
+        redrawChart(to_self, to_other);
+    }
+
+
+</script>
+
+
+{{ endblock }}

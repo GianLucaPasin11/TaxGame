@@ -1,0 +1,74 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+Prima fase
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="panel panel-primary">
+		<div class="panel-body">
+			<h4>Instruzioni</h4>
+
+			<p>Durante la prima fase dovrai scegliere una tra sei lotterie proposte. Ogni lotteria ha due possibili risultati, <i>TESTA</i> o <i>CROCE</i>, i quali accadono con il 50% di probabilità. Il tuo compenso per questa parte dello studio sarà determinato da:</p>
+			<ul>
+				<li>la lotteria selezionata, e</li>
+				<li>quale tra i due possibili risultati (<i>TESTA</i> o <i>CROCE</i>) accade.</li>
+			</ul>
+			<p>Ad esempio, se selezioni la Lotteria 4 e si verifica <i>TESTA</i>, riceverai {{ Constants.choice_4_high }} punti. Se, invece, accade <i>CROCE</i>, riceverai {{ Constants.choice_4_low }} punti.</p>
+			<p>Alla fine dell'esperimento, il computer lancerà una moneta virtuale per determinare quale evento si verificherà. Se esce testa, il risultato è <i>TESTA</i>, quindi otterrai la vincita relativa a quella colonna. Se esce croce, il risultato è <i>CROCE</i> e otterrai la vincità relativa a quella colonna. Le sei diverse lotterie sono elencate di seguito. Seleziona una lotteria utilizzando la casella di input nella parte inferiore dello schermo.</p>
+			<div class="table-responsive">
+				<table class="table">
+					<tr>
+						<th style="text-align:center">LOTTERIA</th>
+						<th style="text-align:center">TESTA</th>
+						<th style="text-align:center">CROCE</th>
+					</tr>
+					<tr>
+						<td style="text-align:center">Lotteria 1</td>
+						<td style="text-align:center">{{ Constants.choice_1_high }} punti</td>
+						<td style="text-align:center">{{ Constants.choice_1_low }} punti</td>
+					</tr>
+					<tr>
+						<td style="text-align:center">Lotteria 2</td>
+						<td style="text-align:center">{{ Constants.choice_2_high }} punti</td>
+						<td style="text-align:center">{{ Constants.choice_2_low }} punti</td>
+					</tr>
+					<tr>
+						<td style="text-align:center">Lotteria 3</td>
+						<td style="text-align:center">{{ Constants.choice_3_high }} punti</td>
+						<td style="text-align:center">{{ Constants.choice_3_low }} punti</td>
+					</tr>
+					<tr>
+						<td style="text-align:center">Lotteria 4</td>
+						<td style="text-align:center">{{ Constants.choice_4_high }} punti</td>
+						<td style="text-align:center">{{ Constants.choice_4_low }} punti</td>
+					</tr>
+					<tr>
+						<td style="text-align:center">Lotteria 5</td>
+						<td style="text-align:center">{{ Constants.choice_5_high }} punti</td>
+						<td style="text-align:center">{{ Constants.choice_5_low }} punti</td>
+					</tr>
+					<tr>
+						<td style="text-align:center">Lotteria 6</td>
+						<td style="text-align:center">{{ Constants.choice_6_high }} punti</td>
+						<td style="text-align:center">{{ Constants.choice_6_low }} punti</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<b>Seleziona la lotteria qui sotto:</b>
+		</div>
+
+		<div class="panel-body">
+			<p>{% formfield player.Lotteria %}</p>
+		</div>
+	</div>
+</div>
+{% next_button %}
+{% endblock %}

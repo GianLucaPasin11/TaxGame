@@ -1,0 +1,108 @@
+{{ block script }}
+    <script>
+        $(function () {
+            let sliders = $("input.slider"),
+                outputs = $('.slider-value'),
+                target = {{ target|json }};
+
+            let getSlidersCurrValues = function(sliders) {
+                let sliders_curr_values = [];
+                sliders.each(function() {
+                    sliders_curr_values.push(parseInt($(this).val()));
+                });
+                return sliders_curr_values
+            };
+
+            let numCenteredSliders = function(sliders_curr_values) {
+                let n = 0;
+                $.each(sliders_curr_values, function() {
+                    if($(this) === target) {
+                        ++n;
+                    }
+                });
+                return n
+            };
+
+            let numCenteredSlidersChanged = function(sliders_curr_values) {
+                return parseInt($('#sliders_task_centered').html()) !== numCenteredSliders(sliders_curr_values);
+            };
+
+            // Disable keyboard
+            $(document).on('keydown', function () {
+               return false
+            });
+
+            // On DOM load, for each slider display current value
+            sliders.each(function (i) {
+                outputs.eq(i).val(sliders.eq(i).val())
+            });
+
+            // On input update displayed value for each slider
+            sliders.on('input', function () {
+               $(this).next().html($(this).val())
+            });
+
+            // On value change, if the slider currently moved is set to target value,
+            // get current value for each slider and send them to the server
+            // NB: change events happen when the value change AND the input field loses focus/isn't selected anymore
+            sliders.on('change', function () {
+                let sliders_curr_values = getSlidersCurrValues(sliders);
+
+                if ($(this).val() === String(target)||numCenteredSlidersChanged(sliders_curr_values)) {
+                    liveSend(sliders_curr_values)
+                }
+            })
+        });
+
+        // When receive message from the server, update number of centered sliders and bonus earned so far
+        function liveRecv(data) {
+            $('#sliders_task_centered').html(data.num_centered);
+            $('#sliders_task_bonus').html(data.bonus);
+            if (data.finished) {
+                $('#form').submit();
+            }
+        }
+    </script>
+{{ endblock }}
+
+{{ block styles }}
+    <!--Import style sheet from static folder of the current app-->
+    <link rel="stylesheet" type="text/css" href="{{ static 'ret_slider/css/sliders_task.css' }}">
+{{ endblock }}
+
+{{ block title }}
+{{ endblock }}
+
+{{ block content }}
+
+    <div class="container-fluid text-center pt-3 pb-4">
+        <div class="row justify-content-around">
+            <div class="col-5 py-md-2 col-border">
+                Number of sliders correctly set:
+                <span id="sliders_task_centered">{{ num_centered }}</span>
+            </div>
+            <div class="col-5 py-md-2 col-border">
+<!--                Bonus earned so far:-->
+<!--                <span id="sliders_task_bonus">{{ bonus }}</span>-->
+            </div>
+        </div>
+    </div>
+
+    <!--Use Bootstrap 5 grid system to display sliders in three columns-->
+    <div class="container-fluid pe-5">
+
+        <!--Loop through chunks of three sliders-->
+        {{ for chunk, offset in sliders }}
+            <div class="row no-gutters align-items-center justify-content-between mb-3"
+                 style="margin-left: {{ offset }}%; margin-right: -{{ offset }}%;">
+
+                <!--For each slider in the chunk, display the input field with annexed current value-->
+                {{ for curr_value in chunk }}
+                    <input type="range" min="{{ min }}" max="{{ max }}" value="{{ curr_value }}" class="slider col-2" >
+                    <output class="slider-value col-1 pl-2"></output>
+                {{ endfor }}
+            </div>
+        {{ endfor }}
+    </div>
+
+{{ endblock }}

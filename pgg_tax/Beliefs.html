@@ -1,0 +1,18 @@
+{{ block title }}
+Before your payoffs are computed, please answer a few questions
+{{ endblock }}
+{{ block content }}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        {{ if group.info }}
+        Remember: {{ if high }}Il denaro raccolto in tasse da tutti i partecipanti sarà messo nel fondo generale e raddoppiato prima di essere ridistribuito in parti uguali tra tutti i partecipanti. {{ else }}Metà del denaro raccolto in tasse da tutti i partecipanti sarà trattenuto dal governo e metà sarà messo in un fondo generale e poi ridistribuito in parti uguali tra tutti i partecipanti.{{ endif }}.</p>
+        {{ endif }}
+    </div>
+</div>
+<br>
+
+{{ formfields }}
+{{ next_button }}
+
+{{ endblock }}

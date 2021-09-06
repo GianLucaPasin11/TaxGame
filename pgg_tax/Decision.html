@@ -1,0 +1,33 @@
+{{ block title }}
+Dichiarazione reddito
+{{ endblock }}
+{{ block content }}
+        <li>
+            Ora le chiediamo di dichiarare il suo reddito di {{Constants.endowment}} a fini fiscali, data un'aliquota del {{Constants.tax_rate}}%.
+        </li>
+        <li>
+            Si ricordi che è libero di dichiarare qualsiasi importo del suo reddito. Sarà tassato solo il reddito che decide di dichiarare.
+        </li>
+        <li>
+            Se non dichiara tutto il suo stipendio c'è la possibilità che venga scoperto e, in tal caso, dovrà pagare una multa.
+        </li>
+<br>
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <b>Importante:</b><br>
+        {{ if group.info }}
+        {{ if high }} Le tasse pagate da tutti i partecipanti saranno raddoppiate prima di essere redistribuite in parti uguali tra tutti i partecipanti. {{ else }} Metà delle tasse pagate da tutti i partecipanti saranno trattenute dal governo e metà saranno redistribuite in parti uguali tra tutti i partecipanti. {{ endif }} <br>
+        {{ endif }}
+    </div>
+</div>
+<br>
+Scelga quanto reddito dichiarare tra 0 e {{Constants.endowment}}: {{ formfields }}
+
+
+<br>
+In tal caso, le tasse da lei pagate sono:<br>
+<br>
+
+{{ next_button }}
+
+{{ endblock }}
